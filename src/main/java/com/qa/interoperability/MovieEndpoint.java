@@ -38,6 +38,20 @@ public class MovieEndpoint {
 		return service.updateMovie(movie);
 	}
 	
+	@PUT
+	@Path("/json/add/{id}")
+	@Produces({"application/json"})
+	public String addMovieShowing(@PathParam("id") Long id, String showing) {
+		return service.addMovieShowing(id, showing);
+	}
+	
+	@PUT
+	@Path("/json/remove/{id}")
+	@Produces({"application/json"})
+	public String removeMovieShowing(@PathParam("id") Long id, String showing) {
+		return service.removeMovieShowing(id, showing);
+	}
+	
 	@DELETE
 	@Path("/json/{id}")
 	@Produces({"application/json"})

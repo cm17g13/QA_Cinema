@@ -9,9 +9,6 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long movie_id;
     
-    //@OneToMany(mappedBy="movie", targetEntity=Showing.class)
-    //private List<Showing> showings;
-
 	@Column(name = "OMDbCode")
     private String OMDbCode = null;
 	
@@ -20,15 +17,18 @@ public class Movie {
     
     @Column(name="year")
     private String year = null;
-
     
+    @Column(name="showings")
+    private String showings = null;
+
 	public Movie() {
     }
 	
-    public Movie(String OMDbCode, String title, String year) {
-        this.title = title; 
+    public Movie(String OMDbCode, String title, String year, String showings) {
+    	this.OMDbCode = OMDbCode;
+    	this.title = title; 
         this.year = year;
-        this.OMDbCode = OMDbCode;
+        this.showings = showings;
     }
     
     public Long getMovie_id() {
@@ -62,6 +62,40 @@ public class Movie {
 	
 	public void setYear(String year) {
 		this.year = year;
+	}
+	
+	public String getShowings() {
+		return showings;
+	}
+
+	public void setShowings(String showings) {
+		this.showings = showings;
+	}
+	
+	public void addShowing(String newShowing) {
+		if(showings == null) {
+			this.showings = newShowing;
+		} else {
+			this.showings = this.showings + "," + newShowing;
+		}
+	}
+	
+	public void removeShowing(String showingToRemove) {
+		String newShowings = "";
+		for(String showing : this.showings.split(",")) {
+			if(!showingToRemove.equals(showing)) {
+				if(newShowings.equals("")) {
+					newShowings = showing;
+				} else {
+					newShowings = newShowings + "," + showing;
+				}
+			}
+		}
+		if(newShowings.length() == 0) {
+			this.showings = null;
+		} else {
+			this.showings = newShowings;
+		}
 	}
 }
 

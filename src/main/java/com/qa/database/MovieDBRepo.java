@@ -34,7 +34,7 @@ public class MovieDBRepo {
 	}
 	
 	public String findAMovie(Long id) {
-
+		logger.info("MovieDBRepo Finding a movie");
 		Movie movie = findMovie(id);
 		if(movie != null) {
 			return jsonConverter.getJSONForObject(movie);
@@ -44,25 +44,26 @@ public class MovieDBRepo {
 	
 	@Transactional(REQUIRED)
 	public String createMovie(String movie) {
-		
+		logger.info("MovieDBRepo Creating movie");
 		Movie newMovie = jsonConverter.getObjectForJSON(movie, Movie.class);
 		manager.persist(newMovie);
 		return "{\"message\": \"movie sucessfully added\"}";
 	}
 
 	@Transactional(REQUIRED)
-	public String updateMovie(Movie movie) {
-		
+	public String updateMovie(Movie movie, String pass, String fail) {
+		logger.info("MovieDBRepo Updating movie");
 		if(movie != null) {
 			manager.merge(movie);
-			return "{\"message\": \"the movie has been updated\"}"; 
+			return pass; 
 		}
-		return "{\"message\": \"movie doesn't exist, could not updated\"}";	
+		return fail;	
 	}
+	
 	
 	@Transactional(REQUIRED)
 	public String deleteMovie(Long id) {
-		
+		logger.info("MovieDBRepo Deleting movie");
 		Movie exists = findMovie(id);
 		if (exists != null) {
 			manager.remove(exists);

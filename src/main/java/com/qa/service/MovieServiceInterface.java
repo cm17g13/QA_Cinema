@@ -12,6 +12,10 @@ public interface MovieServiceInterface {
 
 	public String updateMovie(String movie);
 
+	public String addMovieShowing(Long id, String showing);
+	
+	public String removeMovieShowing(Long id, String showing);
+	
 	public String deleteMovie(Long id);
 	
 	public Movie findMovie(Long id);
