@@ -58,13 +58,13 @@ public class ShowingDBTest {
 	public void findAnShowingTest() {
         Mockito.when(manager.find(Mockito.eq(Showing.class), Mockito.anyLong())).thenReturn(showing1);
         Assert.assertEquals(showingString1, showingManager.findAShowing(1L));
-        
 	}
 
 	@Test
 	public void createShowingTest() {
 		Mockito.when(manager.find(Mockito.eq(Showing.class), Mockito.anyLong())).thenReturn(null);
         Assert.assertEquals("{\"message\": \"showing sucessfully added\"}", showingManager.createShowing(showingString1));
+        
     }
 
 	@Test
