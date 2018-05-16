@@ -51,6 +51,7 @@ public class ShowingDBTest {
         Mockito.when(query.getResultList()).thenReturn(showings);
         String showingArray = "[" + showingString1 + "]";
         Assert.assertEquals(showingArray, showingManager.getAllShowings());
+        
 	}
 	
 
