@@ -15,10 +15,10 @@ public class MovieService implements MovieServiceInterface {
 	private String updatePass = "{\"message\": \"the movie has been updated\"}";
 	private String updateFail = "{\"message\": \"movie doesn't exist, could not updated\"}";
 	
-	private String addShowingPass = "{\"message\": \"the showing was added to the movies times\"}";
+	private String addShowingPass = "{\"message\": \"the showing was added to the movies times, or already existed\"}";
 	private String addShowingFail = "{\"message\": \"the movie did not exist, so a new showing was not added\"}";
 	
-	private String removeShowingPass = "{\"message\": \"the showing was removed from the movies times\"}";
+	private String removeShowingPass = "{\"message\": \"the showing was removed from the movies times, or never existed\"}";
 	private String removeShowingFail = "{\"message\": \"the movie did not exist, so a new showing was not removed\"}";
 	
 	private static final Logger logger = Logger.getLogger(MovieService.class);
