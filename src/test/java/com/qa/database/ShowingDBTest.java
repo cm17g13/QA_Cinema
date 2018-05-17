@@ -65,6 +65,7 @@ public class ShowingDBTest {
 		Mockito.when(manager.find(Mockito.eq(Showing.class), Mockito.anyLong())).thenReturn(null);
         Assert.assertEquals("{\"message\": \"showing sucessfully added\"}", showingManager.createShowing(showingString1));
         
+        
     }
 
 	@Test
