@@ -79,6 +79,18 @@ public class ShowingService implements ShowingServiceInterface {
 			if(!updateShowing.getYear().trim().equals("")) {
 				existingShowing.setYear(updateShowing.getYear());
 			}
+			if(!updateShowing.getScreen().trim().equals("")) {
+				existingShowing.setScreen(updateShowing.getScreen());
+			}
+			if(!updateShowing.getTime().trim().equals("")) {
+				existingShowing.setTime(updateShowing.getTime());
+			}
+			if(updateShowing.getStandardSeats() >= 0) {
+				existingShowing.setStandardSeats(updateShowing.getStandardSeats());
+			}
+			if(updateShowing.getDisabledSeats() >= 0) {
+				existingShowing.setDisabledSeats(updateShowing.getDisabledSeats());
+			}
 		}
 		return existingShowing;
 	}
