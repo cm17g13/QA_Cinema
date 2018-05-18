@@ -26,12 +26,34 @@ public class ShowingDBRepo {
 	
 	
 	public String getAllShowings() {
-		
 		logger.info("ShowingDBRepo getAllShowings");
-		TypedQuery<Showing> query = manager.createQuery("SELECT m FROM Showing m ORDER BY m.title", Showing.class);
+		TypedQuery<Showing> query = manager.createQuery("SELECT s FROM Showing s ORDER BY s.title", Showing.class);
 		Collection<Showing> showings = query.getResultList();
 		return jsonConverter.getJSONForObject(showings);	
 	}
+	
+	public String getAllMovies() {
+		logger.info("ShowingDBRepo getAllMovies");
+		TypedQuery<String> query = manager.createQuery("SELECT DISTINCT(s.title), DISTINCT(s.year) FROM Showing s ORDER BY s.title", String.class);
+		Collection<String> showings = query.getResultList();
+		return jsonConverter.getJSONForObject(showings);	
+	}
+	
+	public String getAllCodes() {
+		logger.info("ShowingDBRepo getAllMovies");
+		TypedQuery<String> query = manager.createQuery("SELECT DISTINCT(s.OMDbCode) FROM Showing s", String.class);
+		Collection<String> showings = query.getResultList();
+		return jsonConverter.getJSONForObject(showings);	
+	}
+	
+	public String getMovieShowings(String searchTitle) {
+		logger.info("ShowingDBRepo getMovieShowings, title: " + searchTitle);
+		TypedQuery<Showing> query = manager.createQuery("SELECT s FROM Showing s WHERE s.title = :searchTitle", Showing.class);
+		query.setParameter("searchTitle", searchTitle);
+		Collection<Showing> showings = query.getResultList();
+		return jsonConverter.getJSONForObject(showings);	
+	}
+	
 	
 	public String findAShowing(Long id) {
 		logger.info("ShowingDBRepo Finding a showing");

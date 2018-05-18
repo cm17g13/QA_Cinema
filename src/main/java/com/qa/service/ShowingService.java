@@ -32,6 +32,18 @@ public class ShowingService implements ShowingServiceInterface {
 		return repo.getAllShowings();
 	}
 	
+	public String getAllMovies() {
+		return repo.getAllMovies();
+	}
+	
+	public String getAllCodes() {
+		return repo.getAllCodes();
+	}
+	
+	public String getMovieShowings(String title) {
+		return repo.getMovieShowings(title);
+	}
+	
 	public String findAShowing(Long id) {
 		return repo.findAShowing(id);
 	}

@@ -5,6 +5,12 @@ import com.qa.persistence.Showing;
 public interface ShowingServiceInterface {
 
 	public String getAllShowings();
+	
+	public String getAllMovies();
+	
+	public String getAllCodes();
+	
+	public String getMovieShowings(String title);
 
 	public String findAShowing(Long id);
 	
