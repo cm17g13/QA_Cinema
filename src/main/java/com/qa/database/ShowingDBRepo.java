@@ -5,11 +5,14 @@ import java.util.Collection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import static javax.transaction.Transactional.TxType.*;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
+
 import com.qa.persistence.Showing;
 import com.qa.util.JSONUtil;
 
@@ -34,14 +37,14 @@ public class ShowingDBRepo {
 	
 	public String getAllMovies() {
 		logger.info("ShowingDBRepo getAllMovies");
-		TypedQuery<String> query = manager.createQuery("SELECT DISTINCT(s.title), DISTINCT(s.year) FROM Showing s ORDER BY s.title", String.class);
-		Collection<String> showings = query.getResultList();
+		Query query = manager.createQuery("SELECT DISTINCT s.title, s.year FROM Showing s ORDER BY s.title");
+		Collection<String> showings = (Collection<String>) query.getResultList();
 		return jsonConverter.getJSONForObject(showings);	
 	}
 	
 	public String getAllCodes() {
 		logger.info("ShowingDBRepo getAllMovies");
-		TypedQuery<String> query = manager.createQuery("SELECT DISTINCT(s.OMDbCode) FROM Showing s", String.class);
+		TypedQuery<String> query = manager.createQuery("SELECT DISTINCT s.OMDbCode FROM Showing s", String.class);
 		Collection<String> showings = query.getResultList();
 		return jsonConverter.getJSONForObject(showings);	
 	}
