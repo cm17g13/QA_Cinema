@@ -103,6 +103,9 @@ public class ShowingService implements ShowingServiceInterface {
 			if(updateShowing.getDisabledSeats() >= 0) {
 				existingShowing.setDisabledSeats(updateShowing.getDisabledSeats());
 			}
+			if(updateShowing.getImageURL().equals("")) {
+				existingShowing.setImageURL(updateShowing.getImageURL());
+			}
 		}
 		return existingShowing;
 	}

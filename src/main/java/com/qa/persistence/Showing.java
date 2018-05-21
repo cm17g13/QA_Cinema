@@ -29,11 +29,14 @@ public class Showing {
     
     @Column(name="disabledSeats")
     private Integer disabledSeats = null;
+    
+    @Column(name="imageURL")
+    private String imageURL = null;
 
 	public Showing() {
     }
 	
-    public Showing(String OMDbCode, String title, String year, String time, String screen, int standardSeats, int disabledSeats) {
+    public Showing(String OMDbCode, String title, String year, String time, String screen, int standardSeats, int disabledSeats, String imageURL) {
     	this.OMDbCode = OMDbCode;
     	this.title = title; 
         this.year = year;
@@ -41,9 +44,10 @@ public class Showing {
         this.screen = screen;
         this.standardSeats = standardSeats;
         this.disabledSeats = disabledSeats;
+        this.imageURL = imageURL;
     }
     
-    public Long getShowing_id() {
+	public Long getShowing_id() {
 		return showing_id;
 	}
     
@@ -115,5 +119,14 @@ public class Showing {
 	public void bookDisabledSeats(int seats) {
 		this.disabledSeats = this.disabledSeats - seats;
 	}
+	
+    public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+
 }
 
