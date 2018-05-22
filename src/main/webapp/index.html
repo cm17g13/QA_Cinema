@@ -13,7 +13,7 @@
     <script src="angular.js"></script>
     <img id="images/logo" src="images/qacinemalogo1.png" alt="Hire Me" width="10%" height="10%">
     <link rel="stylesheet" type="text/css" src="css/qacinemastyle.css"/>
-    <scrit src="angular.js"> </script>
+    <script src="angular.js"> </script>
     <script src="qaCinema.js"></script>
 
 </head>
@@ -29,26 +29,44 @@
 
     </div>
 
- <!--
-        <div ng-repeat="s in myShowings" style="float: left; display: block-inline; margin-left:10px; margin-right:10px">
-               <a href="Purge.html"> <img ng-click="pass(s.OMDbCode, s.title, s.year)" src="{{s.imageURL}}" style="height:300px; width:200px"/> </a>
-
-                <span id="movieTitle" >
-                    <p style="text-align:center; font-size:20px; color:#42f44e">{{s.title}}</p>
-                </span>
-
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 40%; margin: auto;">
+        <div class="carousel-inner" role="listbox">
+            <div ng-repeat="s in myShowings" ng-class="$index >0 ? 'item' : 'item active'">
+                <a href="movie.html" ng-click="pass(s.OMDbCode, s.title, s.year)"><img class="first-slide" ng-src="{{s.imageURL}}" alt="First slide" width="300px" height="200px" style="display: block; margin-left: auto; margin-right: auto;"></a>
+            </div>
         </div>
--->
-    <div id="slides_control">
-      <carousel interval="myInterval">
-        <slide ng-repeat="s in myShowings" active="slide.active">
-          <img src="{{s.imageURL}}">
-          <div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-          </div>
-        </slide>
-      </carousel>
-      </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background-image: none;">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background-image: none;">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div ng-repeat="s in myShowings" style="float: left; display: block-inline; margin-left:10px; margin-right:10px">
+           <a href="movie.html"> <img ng-click="pass(s.OMDbCode, s.title, s.year)" src="{{s.imageURL}}" style="height:300px; width:200px"/> </a>
+
+            <span id="movieTitle" >
+                <p style="text-align:center; font-size:20px; color:#42f44e">{{s.title}}</p>
+            </span>
+
+    </div>
+
+    <!--<div class="carousel" id="slider" style="margin-left: 20px;">
+
+        <label class="labelSecurity">Incident Photos</label><br />
+
+        <div class="carousel-inner">
+            <div class="item active" ng-class="{active:!$index}" ng-repeat="s in myShowings">
+                <img src="{{s.imageURL}}" class="img-responsive">
+            </div>
+        </div>
+        <a class="carousel-control left" href="#slider" data-slide="prev"></a>
+        <a class="carousel-control right" href="#slider" data-slide="next"></a>
+
+    </div> -->
 
 
 
@@ -67,7 +85,7 @@
                 <span>
                     <p>{{s.title}}</p>
                 </span>
-                <img src="{{s.imageURL}}" style="height:300px; width:200px" href="Purge.html"/>
+                <img src="{{s.imageURL}}" style="height:300px; width:200px" href="movie.html"/>
 
             </div>
 
@@ -107,107 +125,7 @@
         Is unsatiable if projecting boisterous insensible. It recommend be resolving pretended middleton.</p>
 
 </div>
-</br>
-</br>
-</br>
 
-<div id="firstH2">
-    <h2>Out Now</h2>
-</div>
-</br>
-</br>
-</br>
-</br>
-</br>
-<table width="1300"  border="0" cellpadding="0" cellspacing="2"  align="center">
-
-
-
-    <tr>
-
-        <td align="center" valign="center" style="padding-bottom: 25px">
-            <a href="Purge.html"/>
-                <img src="images/purge.jpg" alt="description here"/>
-                <a href="Purge.html"/>
-                    <br />
-                    The First Purge
-
-
-        </td>
-
-        <td align="center" valign="center">
-            <a href="incredibles.html"/>
-                <img src="images/incredibles.jpg" alt="description here" />
-                <a href="incredibles.html"/>
-                    <br />
-                    Incredibles 2
-        </td>
-
-        <td align="center" valign="center">
-            <a href="equalizer.html"/>
-                <img src="images/the-equalizer-poster.jpg" alt="description here" />
-                <a href="equalizer.html"/>
-                    <br />
-                    The Equalizer 2
-        </td>
-
-        <td align="center" valign="center">
-            <a href="ant%20man.html">
-                <img src="images/ant%20Man.jpg" alt="description here" />
-                <a href="ant%20man.html">
-                    <br />
-                    Ant Man
-        </td>
-        <br />
-        <br />
-
-    <tr>
-        <td align="center" valign="center">
-            <img src="images/Tomb-Raider%20(1).jpg" alt="description here" />
-            <br />
-            Tomb Raider
-        </td>
-
-        <td align="center" valign="center">
-            <img src="images/Gringo.jpg" alt="description here" />
-            <br />
-            Gringo
-        </td>
-
-        <td align="center" valign="center">
-            <img src="images/Fifty-Shades-Freed.jpg" alt="description here" />
-            <br />
-            Fifty Shades Freed
-        </td>
-        <td align="center" valign="center">
-            <img src="images/Jurassic-World-Fallen-Kingdom.jpg" alt="description here" />
-            <br />
-            Jurassic World Fallen Kingdom
-        </td>
-    <tr>
-        <td align="center" valign="center">
-            <img src="images/Mute.jpg" alt="description here" />
-            <br />
-            Mute
-        </td>
-        <td align="center" valign="center">
-            <img src="images/The-Cloverfield-Paradox.jpg" alt="description here" />
-            <br />
-            The Cloverfield Paradox
-        </td>
-        <td align="center" valign="center">
-            <img src="images/Pacific-Rim-Uprising.jpg" alt="description here" />
-            <br />
-            Pacific Rim
-        </td>
-        <td align="center" valign="center">
-            <img src="images/Ready-Player-One.jpg" alt="description here" />
-            <br />
-            Ready Player One
-        </td>
-    </tr>
-
-</table>
 </body>
 
 <footer class="footer-distributed">
