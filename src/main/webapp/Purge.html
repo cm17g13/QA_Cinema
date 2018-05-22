@@ -1,71 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="qaCinema" ng-controller="qaController" ng-init="loadMovie()">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Purge</title>
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="angular.js"></script>
+    <script src="qaCinema.js"></script>
+
 </head>
-
-
+    
 <body>
-
-<div id="nav">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="what's on.html">What's On</a></li>
-        <li><a href="about us.html">About Us</a></li>
-        <li><a href="classification.html">Classification</a></li>
-        <li><a href="contact us.html">Contact Us</a></li>
-
-    </ul>
-</div>
-
+    <div id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="what's on.html">What's On</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="classification.html">Classification</a></li>
+            <li><a href="contact us.html">Contact Us</a></li>
+        </ul>
+    </div>
 
 <br><br><br>
 
 <div id="container">
     <center><h1> QA Cinema </h1></center>
-
 </div>
-
 
 <div class="large_container">
 
-
     <div id="large_img">
-        <h2>The First Purge </h2>
-        <div style="display: inline-block">
-            <img src="images/purge.jpg" style="float: left; padding-right: 20px;" height="600" width="400">
-            <div id="description">
-                <h4> Title: The First Purge</h4>
-                <h4> Staring:  Marisa Tomei, Lex Scott Davis, Luna Lauren Velez</h4>
-                <h4> Movie Director: Gerard McMurray</h4><br><br>
-                <h5> To push the crime rate below one percent for the rest of the year, the New Founding Fathers of America test a sociological theory that vents aggression for one night in one isolated community. But when the violence of oppressors meets the rage of the others, the contagion will explode from the trial-city borders and spread across the nation.
-                </h5>
+        <h2 id="movieTitle">{{movieTitle}}</h2>
+        <div style="display: inline-block; float: left;">
+            <img id="movieImg" src="{{moviePoster}}" style="float: left; padding-right: 20px;" height="600" width="400">
+        </div>
+        <span id="movieInfo" style="display:inline-block; width:50%; height:50% float:left;">
+                <h4 id="movieActors">Cast: {{movieActors}}</h4> 
+                <h4 id="movieDirector">Director: {{movieDirector}}</h4>
+                <h4 id="movieGenre">Genre: {{movieGenre}}</h4>
+                <h4 id="movieRelease">Release Date: {{movieRelease}}</h4>
+                <h4 id="movieIMDBR">IMDb Rating: {{movieIMDBR}}</h4>
+
+
+                <h4 id="movieTime">Runtime: {{movieTime}}</h4>
+                <h5 id="movieDescription">Plot: {{movieDescription}}</h5>
 
                 <br><br>
                 <a href="bookticket.html"><button type="button" class="btn btn-primary">Buy Tickets</button></a>
 
-            </div>
-        </div>
+        </span>
 
     </div>
-
-
-
-
-
-
 </div>
 
-
-
-
-
-
 <br><br><br>
-<footer class="footer-distributed">
+<footer class="footer-distributed" style="margin-top:15%">
 
     <div class="footer-left">
 
@@ -101,8 +91,6 @@
             </p>
         </div>
 
-
-
     </div>
 
     <div class="footer-right">
@@ -124,6 +112,7 @@
 
     </div>
 
-</footer>
+    </footer>
+   
 </body>
 </html>
