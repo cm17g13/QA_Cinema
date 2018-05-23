@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+        width: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      var map;
+      var infowindow;
+      var pyrmont = {lat: 53.474061, lng: -2.286404};
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 500,
+          type: ['store']
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+      function lookForRestaurants() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 500,
+          type: ['restaurant']
+        }, callback);
+      }
+      function lookForStores() {
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 500,
+          type: ['store']
+        }, callback);
+      }
+      function performSearch() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        let keyword = document.getElementById('searchBox').value;
+        var request = {
+          bounds: map.getBounds(),
+          keyword: keyword
+        };
+        service.radarSearch(request, callback);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    
+      <p>Look for nearby places: </p>
+        <input type="radio" name="nearbyPlaces" value="stores" checked onclick="lookForStores()"> Stores<br>
+        <input type="radio" name="nearbyPlaces" value="restaurants" onclick="lookForRestaurants()"> Restaurants<br>
+
+        Input a nearby place you would like to view (e.g. coffee shop, petrol station, etc.): <input type="text" id="searchBox"> 
+        <button onclick="performSearch()">Search</button>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcilA3wFUK4N5ozgc2wtkU9XA5-jnyLjg&libraries=places&callback=initMap" async defer></script>
+  </body>
+</html>

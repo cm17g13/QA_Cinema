@@ -18,8 +18,9 @@ td{
 #container{
     color: white;
 }
-#large_img{
+#movieDetails{
     color: white;
+
 }
 #description{
     color: white;
@@ -72,7 +73,7 @@ td{
     padding-bottom: 4px;
 }
 #nav.align-right {
-    float: right;
+    float: left;
 }
 #nav.align-right ul li {
     float: right;
@@ -100,7 +101,6 @@ td{
 #nav #bg-two {
     height: 59px;
     z-index: 2;
-    background: url('images/bg.png');
 }
 #nav #bg-three {
     bottom: 4px;
@@ -118,7 +118,6 @@ td{
     bottom: 4px;
     height: 55px;
     z-index: 4;
-    background: url('images/bg.png');
 }
 #nav ul {
     height: 59px;
@@ -155,7 +154,6 @@ td{
 }
 #nav ul li a:hover,
 #nav ul li.active > a {
-    background: url('images/bg.png');
     color: #ffffff;
 }
 
