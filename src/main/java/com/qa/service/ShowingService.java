@@ -15,12 +15,6 @@ public class ShowingService implements ShowingServiceInterface {
 	private String updatePass = "{\"message\": \"the showing has been updated\"}";
 	private String updateFail = "{\"message\": \"showing doesn't exist, could not updated\"}";
 	
-	private String addShowingPass = "{\"message\": \"the showing was added to the showings times, or already existed\"}";
-	private String addShowingFail = "{\"message\": \"the showing did not exist, so a new showing was not added\"}";
-	
-	private String removeShowingPass = "{\"message\": \"the showing was removed from the showings times, or never existed\"}";
-	private String removeShowingFail = "{\"message\": \"the showing did not exist, so a new showing was not removed\"}";
-	
 	private String updateSeatsPass = "{\"message\": \"the seats have been booked\"}";
 	private String updateSeatsFail = "{\"message\": \"the showing did not exist, so seats could not be booked\"}";
 	private String updateSeatsFull = "{\"message\": \"Their was not enough seats available\"}";
