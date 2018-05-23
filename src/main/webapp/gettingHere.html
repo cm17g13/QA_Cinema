@@ -19,24 +19,27 @@
 <body>
     <div id="nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="gettingHere.html">Getting here</a></li>
-            <li><a href="about us.html">About Us</a></li>
-            <li><a href="classification.html">Classification</a></li>
             <li><a href="contact us.html">Contact Us</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="gettingHere.html">Getting here</a></li>
+            <li><a href="classification.html">Classification</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
     </div>
-    <div id="mapContainer" style="margin:auto" >
-        <div id="map" style="width:50%; height:50%; width: 50%; border: 3px solid #0f71ba; padding: 10px;"></div>
-        
-          <p>Look for nearby places: </p>
+    <center>
+        <div id="mapContainer" style="margin:auto"  >
+            <div id="map" style="width:50%; height:50%; width: 50%; border: 3px solid #0f71ba; padding: 10px;"></div>
 
-          <select onchange="lookForPlace(this.value)">
+            <p>Look for nearby places: </p>
+
+            <select onchange="lookForPlace(this.value)">
                 <option value='store'>Stores</option>
                 <option value='restaurant'>Restaurants</option>
                 <option value='atm'>ATMs</option>
-          </select>
-    </div>
+            </select>
+        </div>
+    </center>
+
         <footer class="footer-distributed">
             <div id="footer-container">
             <div class="footer-left">
