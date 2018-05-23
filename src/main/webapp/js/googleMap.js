@@ -1,23 +1,3 @@
-<html>
-  <head>
-    <title>Place searches</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 50%;
-        width: 50%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <script>
       var map;
       var infowindow;
       var pyrmont = {lat: 53.474061, lng: -2.286404};
@@ -72,18 +52,3 @@
           type: [type]
         }, callback);
       }
-    </script>
-  </head>
-  <body>
-    <div id="map"></div>
-    
-      <p>Look for nearby places: </p>
-      <select onchange="lookForPlace(this.value);">
-        <option value='store'>Stores</option>
-        <option value='restaurant'>Restaurants</option>
-        <option value='atm'>ATMs</option>
-      </select>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcilA3wFUK4N5ozgc2wtkU9XA5-jnyLjg&libraries=places&callback=initMap" async defer></script>
-  </body>
-</html>
