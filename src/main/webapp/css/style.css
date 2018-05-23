@@ -21,8 +21,17 @@ td{
 }
 #movieDetails{
     color: white;
-
 }
+.seatDisplay{
+    visibility: hidden;
+}
+
+.showingButton {
+    margin-right: 10px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+}
+
 #description{
     color: white;
     padding-top: 5px;

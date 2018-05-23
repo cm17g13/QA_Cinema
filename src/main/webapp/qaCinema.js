@@ -5,8 +5,10 @@ app.controller('qaController', function($scope, $http) {
 	$scope.syear = null;
 	$scope.stime = null;
 	$scope.sscreenNo = null;
+    $scope.sSeats = 0;
+    $scope.dSeats = 0;
 
-	$scope.loadMovie = function () {
+        $scope.loadMovie = function () {
 		$scope.movieTitle = localStorage.getItem("stored_title");
 		let omdbCode = localStorage.getItem("stored_code");
 		$http({                    method: "GET",
@@ -27,6 +29,16 @@ app.controller('qaController', function($scope, $http) {
                 });
 	};
 
+	$scope.geMovieShowings = function(title) {
+        $http({ method: "GET",
+            url: "http://localhost:8080/CinemaApp/rest/cinema/movie/"+title
+        }).then(function mySuccess (response) {
+            $scope.movieShowings = response.data;
+        }, function myError(response) {
+
+        });
+	}
+
 	// $scope.firstName = null;
 	// $scope.secondName = null;
 	// $scope.accountNumber = null;
@@ -39,11 +51,11 @@ app.controller('qaController', function($scope, $http) {
 	$scope.getAll = function(){
 		$http({
 	        method : "GET",
-	        url : "http://localhost:8080/CinemaApp/rest/cinema/showing"
+	        url : "http://localhost:8080/CinemaApp/rest/cinema/movie"
 	    }).then(function mySuccess(reply) {
-	        $scope.myShowings = reply.data;
+	        $scope.myMovies = reply.data;
 	    }, function myError(reply) {
-	        $scope.myShowings = reply.statusText;
+	        $scope.myMovies = reply.statusText;
 	    });	
 	};
 
@@ -81,6 +93,49 @@ app.controller('qaController', function($scope, $http) {
 			$scope.headers = reply.headers();
 		});
 	};
+
+    $scope.getShowing = function(id, time){
+    	$scope.time = time;
+    	$scope.id = id;
+        $http({
+            method : "GET",
+            url : "http://localhost:8080/CinemaApp/rest/cinema/showing/" + id
+        }).then(function mySuccess(reply) {
+            $scope.standardSeats = reply.data.standardSeats;
+            $scope.disabledSeats = reply.data.disabledSeats;
+        }, function myError(reply) {
+            $scope.mySeats = reply.statusText;
+        });
+    };
+
+    $scope.alternateVisibility = function(panelID) {
+    	let panel = document.getElementById(panelID);
+    	if(panel.style.visibility == "visible") {
+    		panel.style.visibility = "hidden";
+    	} else {
+            panel.style.visibility = "visible";
+    	}
+
+    }
+
+    $scope.bookSeats = function (id){
+        var data = {
+            standardSeats : this.sSeats,
+            disabledSeats : this.dSeats
+        };
+        $http.put('http://localhost:8080/CinemaApp/rest/cinema/showing/book/' + id, JSON.stringify(data)).then(function (reply) {
+            if (reply.data) {
+                //if(reply.data.message === "the seats have been booked");
+            }
+        }, function (reply) {
+            $scope.msg = "Service not available";
+            $scope.statusval = reply.status;
+            $scope.statustext = reply.statusText;
+            $scope.headers = reply.headers();
+        });
+    };
+
+   1
 
 	$scope.pass = function (pass_code, pass_title, pass_year) {
 		window.localStorage.setItem("stored_code", pass_code);

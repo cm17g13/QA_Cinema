@@ -37,7 +37,7 @@ public class ShowingDBRepo {
 	
 	public String getAllMovies() {
 		logger.info("ShowingDBRepo getAllMovies");
-		Query query = manager.createQuery("SELECT DISTINCT s.title, s.year, s.imageURL FROM Showing s ORDER BY s.title");
+		Query query = manager.createQuery("SELECT DISTINCT s.title, s.year, s.imageURL, s.OMDbCode FROM Showing s ORDER BY s.title");
 		Collection<String> showings = (Collection<String>) query.getResultList();
 		return jsonConverter.getJSONForObject(showings);	
 	}
