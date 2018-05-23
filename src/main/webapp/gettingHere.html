@@ -13,7 +13,7 @@
     <script src="js/angular.js"></script>
     <link rel="stylesheet" type="text/css" src="css/qacinemastyle.css"/>
     <script src="js/qaCinema.js"></script>
-    <script src="js/googleMap.js"></script>
+    <script src="js/gettingHere.js"></script>
 
 </head>
 <body>
@@ -21,23 +21,17 @@
         <ul>
             <li><a href="contact us.html">Contact Us</a></li>
             <li><a href="about us.html">About Us</a></li>
-            <li><a href="gettingHere.html">Getting here</a></li>
+            <li><a href="placesToGo.html">Places to go</a></li>
             <li><a href="classification.html">Classification</a></li>
             <li><a href="index.html">Home</a></li>
         </ul>
     </div>
     <center>
-        <div id="mapContainer" style="margin:auto"  >
-            <div id="map" style="width:50%; height:50%; width: 50%; border: 3px solid #0f71ba; padding: 10px;"></div>
-
-            <p>Look for nearby places: </p>
-
-            <select onchange="lookForPlace(this.value)">
-                <option value='store'>Stores</option>
-                <option value='restaurant'>Restaurants</option>
-                <option value='atm'>ATMs</option>
-            </select>
+        <div id="floating-panel" style="margin-top:2%">
+            <b style="color:white">Start: </b>
+            <input type="text" id="startLocation" onfocus="this.value=''" value="Insert your start location"></input>
         </div>
+        <div id="map" style="width:50%; height:50%; width: 50%; border: 3px solid #0f71ba; padding: 10px;"></div>
     </center>
 
         <footer class="footer-distributed">
@@ -53,9 +47,9 @@
                     ·
                     <a href="#">Screens</a>
                     ·
-                    <a href="#">Places to go</a>
+                    <a href="placesToGo.html">Places to go</a>
                     ·
-                    <a href="#">Getting here</a>
+                    <a href="gettingHere.html">Getting here</a>
                 </p>
 
                 <p class="footer-company-name">QA Cinemas &copy; 2018</p>
