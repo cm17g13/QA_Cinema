@@ -27,7 +27,7 @@ td{
 #movieDetails{
     color: white;
 }
-.seatDisplay{
+.hiddenPanel{
     visibility: hidden;
 }
 

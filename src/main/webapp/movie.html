@@ -30,26 +30,30 @@
                 <img id="movieImg" src="{{moviePoster}}" style="float: left; padding-right: 20px;" height="600" width="400">
             </div>
             <span id="movieInfo" style="display:inline-block; width:50%; height:50% float:left;">
-                    <h4 id="movieActors">Cast: {{movieActors}}</h4>
-                    <h4 id="movieDirector">Director: {{movieDirector}}</h4>
-                    <h4 id="movieGenre">Genre: {{movieGenre}}</h4>
-                    <h4 id="movieRelease">Release Date: {{movieRelease}}</h4>
-                    <h4 id="movieIMDBR">IMDb Rating: {{movieIMDBR}}</h4>
-                    <h4 id="movieTime">Runtime: {{movieTime}}</h4>
-                    <h5 id="movieDescription">Plot: {{movieDescription}}</h5>
-                    <div ng-repeat="s in movieShowings">
-                        <input class="showingButton" type="button" value="{{s.time}}" name="{{s.showing_id}}" class="btn btn-primary" ng-click="getShowing(s.showing_id, s.time); alternateVisibility('seatDisplay');">
-                    </div>
-                    <div id="seatDisplay" class="seatDisplay">
-                        <h3>Showing at <b style="color: orange">{{time}}</b> selected</h3>
-                        <h4>There are currently <b style="color: orange">{{standardSeats}}</b> Standard Seats and <b style="color: orange">{{disabledSeats}}</b> disabled Seats</h4>
-                        <form>
-                            <span><h4>Number of Standard seats (£10.99)</h4><input ng-model="sSeats" type="number" max="{{standardSeats}}" min="0"></span><br>
-                            <span><h4>Number of Disabled seats (£10.99)</h4><input ng-model="dSeats" type="number" max="{{disabledSeats}}" min="0"></span>
-                            <input type="submit" value="Confirm Seats" ng-click="bookSeats(id); standardSeats = 0; disabledSeats = 0; alternateVisibility('seatDisplay');">
-                        </form>
-
-                    </div>
+                <h4 id="movieActors">Cast: {{movieActors}}</h4>
+                <h4 id="movieDirector">Director: {{movieDirector}}</h4>
+                <h4 id="movieGenre">Genre: {{movieGenre}}</h4>
+                <h4 id="movieRelease">Release Date: {{movieRelease}}</h4>
+                <h4 id="movieIMDBR">IMDb Rating: {{movieIMDBR}}</h4>
+                <h4 id="movieTime">Runtime: {{movieTime}}</h4>
+                <h5 id="movieDescription">Plot: {{movieDescription}}</h5>
+                <div ng-repeat="s in movieShowings">
+                    <input class="showingButton" type="button" value="{{s.time}}" name="{{s.showing_id}}" class="btn btn-primary" ng-click="getShowing(s.showing_id, s.time); alternateVisibility('seatDisplay');">
+                </div>
+                <div id="seatDisplay" class="hiddenPanel">
+                    <h3>Showing at <b style="color: orange">{{time}}</b> selected</h3>
+                    <h4>There are currently <b style="color: orange">{{standardSeats}}</b> Standard Seats and <b style="color: orange">{{disabledSeats}}</b> disabled Seats</h4>
+                    <form>
+                        <span><h4>Number of Standard seats (£10.99)</h4><input ng-model="sSeats" type="number" max="{{standardSeats}}" min="0"></span><br>
+                        <span><h4>Number of Disabled seats (£10.99)</h4><input ng-model="dSeats" type="number" max="{{disabledSeats}}" min="0"></span>
+                        <input type="submit" value="See total" ng-click="standardSeats = null; disabledSeats = null; alternateVisibility('seatDisplay'); alternateVisibility('confirmDisplay');">
+                    </form>
+                </div>
+                <span id="confirmDisplay" class="hiddenPanel" style="margin: 20px">
+                    <h4>Thank you very much for purchasing {{sSeats}} Standard and {{dSeats}} Disabled seats</h4>
+                    <h4> this comes to a total of £{{(sSeats + dSeats)*10.99}}</h4>
+                    <input type="button" value="Confirm Seats" ng-click="bookSeats(id); alternateVisibility('confirmDisplay')";
+                </span>
             </span>
         </div>
     </div>

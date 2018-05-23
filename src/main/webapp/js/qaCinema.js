@@ -124,6 +124,8 @@ app.controller('qaController', function($scope, $http) {
             $scope.statustext = reply.statusText;
             $scope.headers = reply.headers();
         });
+        this.sSeats = 0;
+        this.dSeats = 0;
     };
 
     1
