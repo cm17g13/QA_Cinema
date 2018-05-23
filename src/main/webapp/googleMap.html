@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <title>Place searches</title>
@@ -58,7 +57,8 @@
           infowindow.open(map, this);
         });
       }
-      function lookForRestaurants() {
+
+      function lookForPlace(type) {
         map = new google.maps.Map(document.getElementById('map'), {
           center: pyrmont,
           zoom: 15
@@ -69,38 +69,8 @@
         service.nearbySearch({
           location: pyrmont,
           radius: 500,
-          type: ['restaurant']
+          type: [type]
         }, callback);
-      }
-      function lookForStores() {
-
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        service.nearbySearch({
-          location: pyrmont,
-          radius: 500,
-          type: ['store']
-        }, callback);
-      }
-      function performSearch() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: pyrmont,
-          zoom: 15
-        });
-
-        infowindow = new google.maps.InfoWindow();
-        var service = new google.maps.places.PlacesService(map);
-        let keyword = document.getElementById('searchBox').value;
-        var request = {
-          bounds: map.getBounds(),
-          keyword: keyword
-        };
-        service.radarSearch(request, callback);
       }
     </script>
   </head>
@@ -108,11 +78,11 @@
     <div id="map"></div>
     
       <p>Look for nearby places: </p>
-        <input type="radio" name="nearbyPlaces" value="stores" checked onclick="lookForStores()"> Stores<br>
-        <input type="radio" name="nearbyPlaces" value="restaurants" onclick="lookForRestaurants()"> Restaurants<br>
-
-        Input a nearby place you would like to view (e.g. coffee shop, petrol station, etc.): <input type="text" id="searchBox"> 
-        <button onclick="performSearch()">Search</button>
+      <select onchange="lookForPlace(this.value);">
+        <option value='store'>Stores</option>
+        <option value='restaurant'>Restaurants</option>
+        <option value='atm'>ATMs</option>
+      </select>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcilA3wFUK4N5ozgc2wtkU9XA5-jnyLjg&libraries=places&callback=initMap" async defer></script>
   </body>
