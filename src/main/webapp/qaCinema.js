@@ -38,16 +38,7 @@ app.controller('qaController', function($scope, $http) {
 
         });
 	}
-
-	// $scope.firstName = null;
-	// $scope.secondName = null;
-	// $scope.accountNumber = null;
-	// $scope.id = null;
-	// $scope.updatefName=null;
-	// $scope.updatelName=null;
-	// $scope.updateANumber=null;
-	// $scope.lblMsg = null;
-
+	
 	$scope.getAll = function(){
 		$http({
 	        method : "GET",

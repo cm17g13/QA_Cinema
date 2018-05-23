@@ -12,11 +12,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/angular.js"></script>
     <link rel="stylesheet" type="text/css" src="css/qacinemastyle.css"/>
-    <script src="js/angular.js"> </script>
     <script src="js/qaCinema.js"></script>
+    <script src="js/gettingHere.js"></script>
 
-
-<body ng-app="qaCinema" ng-controller="qaController" ng-init="getAll()">
+</head>
+<body>
     <div id="nav">
         <ul>
             <li><a href="contact us.html">Contact Us</a></li>
@@ -26,35 +26,13 @@
             <li><a href="index.html">Home</a></li>
         </ul>
     </div>
-
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 40%; margin: auto;">
-        <div class="carousel-inner" role="listbox">
-            <div ng-repeat="s in myMovies" ng-class="$index >0 ? 'item' : 'item active'">
-                <a href="movie.html" ng-click="pass(s[3], s[0], s[1])"><img class="first-slide" ng-src="{{s[2]}}" alt="First slide" width="300px" height="200px" style="display: block; margin-left: auto; margin-right: auto;"></a>
-            </div>
+    <center>
+        <div id="floating-panel" style="margin-top:2%">
+            <b style="color:white">Start: </b>
+            <input type="text" id="startLocation" onfocus="this.value=''" value="Insert your start location"></input>
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="background-image: none;">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="background-image: none;">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <div id="whatsOnContainer" style="margin:auto; padding:50px; ">
-        <div id="whatson" ng-repeat="s in myMovies" style="margin-top:5%; float: left; display: block-inline; width:400px; height:600px; margin-left:10px; margin-right:10px">
-               <a href="movie.html"> <img ng-click="pass(s[3], s[0], s[1])" src="{{s[2]}}" style="height:100%; width:100%"/> </a>
-                <span id="movieTitle" >
-                    <p style="text-align:center; font-size:20px; color:white">{{s[0]}}</p>
-                </span>
-
-            </div>
-
-        </div>
-        <br><br><br>
-    </head>
+        <div id="map" style="width:50%; height:50%; width: 50%; border: 3px solid #0f71ba; padding: 10px;"></div>
+    </center>
 
         <footer class="footer-distributed">
             <div id="footer-container">
@@ -112,6 +90,6 @@
             </div>
             </div>
         </footer>
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcilA3wFUK4N5ozgc2wtkU9XA5-jnyLjg&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>
