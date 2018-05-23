@@ -80,4 +80,5 @@ public class ShowingDBTest {
         Assert.assertEquals("{\"message\": \"the showing has been deleted\"}", showingManager.deleteShowing(1L));
 
     }
+	
 }
