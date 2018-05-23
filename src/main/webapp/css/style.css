@@ -11,6 +11,9 @@ table {
     margin-bottom: 50px;
 
 }
+#whatsOnContainer{
+
+}
 
 td{
     margin-bottom: 50px;
@@ -65,7 +68,7 @@ td{
 #nav {
     border-top: 2px solid #0f71ba;
     border-bottom: 2px solid #0f71ba;
-    margin: 0 32%;
+    margin: 0 36%;
     text-align: center;
 }
 #nav {
@@ -224,6 +227,7 @@ td{
 }
 #about{
     color: white;
+    width: 800px;
 }
 
 .footer-distributed{

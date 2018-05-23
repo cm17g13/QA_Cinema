@@ -15,12 +15,11 @@
     <script src="angular.js"> </script>
     <script src="qaCinema.js"></script>
 
-</head>
+
 <body ng-app="qaCinema" ng-controller="qaController" ng-init="getAll()">
     <div id="nav">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="what's on.html">What's On</a></li>
             <li><a href="about us.html">About Us</a></li>
             <li><a href="classification.html">Classification</a></li>
             <li><a href="contact us.html">Contact Us</a></li>
@@ -42,16 +41,18 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    <div id="whatsOnContainer" style="margin:auto; padding:50px; ">
-        <div id="whatson" ng-repeat="s in myShowings" style="margin-top:5%; float: left; display: block-inline; width:400px; height:600px; margin-left:10px; margin-right:10px">
-               <a href="movie.html"> <img ng-click="pass(s.OMDbCode, s.title, s.year)" src="{{s.imageURL}}" style="height:100%; width:100%"/> </a>
+        <div id="whatsOnContainer" style="margin-bottom:70%; padding: 98px;">
+            <div id="whatson" ng-repeat="s in myShowings" style="margin-top:5%;  float: left; display: block-inline; width:400px; height:600px; margin-left:10px; margin-right:10px">
+                <a href="movie.html"> <img ng-click="pass(s.OMDbCode, s.title, s.year)" src="{{s.imageURL}}" style="height:100%; width:100%"/> </a>
 
                 <span id="movieTitle" >
                     <p style="text-align:center; font-size:20px; color:white">{{s.title}}</p>
                 </span>
 
+            </div>
         </div>
-    </div>
+        <br><br><br>
+    </head>
 
    
         <footer class="footer-distributed">
