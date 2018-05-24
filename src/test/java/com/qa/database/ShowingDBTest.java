@@ -72,7 +72,6 @@ public class ShowingDBTest {
 	public void updateShowingTest() {
 		Mockito.when(manager.find(Mockito.eq(Showing.class), Mockito.anyLong())).thenReturn(showing1);
         Assert.assertEquals("{\"message\": \"the showing has been updated\"}", showingManager.updateShowing(showing1, "{\"message\": \"the showing has been updated\"}", "{\"message\": \"showing doesn't exist, could not updated\"}"));
-
 	}
 
 	@Test
