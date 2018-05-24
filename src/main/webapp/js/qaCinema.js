@@ -5,7 +5,9 @@ app.controller('qaController', function($scope, $http) {
     $scope.syear = null;
     $scope.stime = null;
     $scope.sscreenNo = null;
-    $scope.sSeats = 0;
+    $scope.sSeats1 = 0;
+    $scope.sSeats2 = 0;
+    $scope.sSeats3 = 0;
     $scope.dSeats = 0;
 
     $scope.loadMovie = function () {
@@ -110,21 +112,22 @@ app.controller('qaController', function($scope, $http) {
     }
 
     $scope.bookSeats = function (id){
+
         var data = {
-            standardSeats : this.sSeats,
+            standardSeats : this.sSeats1 + this.sSeats2 + this.sSeats3,
             disabledSeats : this.dSeats
         };
         $http.put('http://localhost:8080/CinemaApp/rest/cinema/showing/book/' + id, JSON.stringify(data)).then(function (reply) {
-            if (reply.data) {
-                //if(reply.data.message === "the seats have been booked");
+            if (reply.data.message === "Their was not enough seats available") {
+                document.getElementById("messagePanel").innerText = "There are not enough seats in this showing, please pick another or book less seats"
             }
-        }, function (reply) {
-            $scope.msg = "Service not available";
-            $scope.statusval = reply.status;
-            $scope.statustext = reply.statusText;
-            $scope.headers = reply.headers();
+
+            $scope.alternateVisibility('confirmDisplay');
+            $scope.alternateVisibility('overBookPanel');
         });
-        this.sSeats = 0;
+        this.sSeats1 = 0;
+        this.sSeats2 = 0;
+        this.sSeats3 = 0;
         this.dSeats = 0;
     };
 
